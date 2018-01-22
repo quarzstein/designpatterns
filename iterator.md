@@ -4,7 +4,7 @@ Iteratoren werden in der C# Entwicklung als Liste oder Arrays verwendet und beis
 in dem Programmcode hinterlegt werden. Iteratoren, müssen nicht zwangsweise eine zusätzliche Klasse besitzen, sondern können
 ebenfalls direkt aufgerufen werden, siehe unten im Beispiel. Sie geben hier entsprechend mit der `Yield Return`
 Methode nacheinander die Werte zurück, welche definiert werden müssen.Ein Iterator wird in der Regel mit 
-einer `foreach` Anweisung erzeugt. 
+einer `foreach` Anweisung erzeugt und kann nur in einer Methode oder Get Zugriffsmethode vorkommen.
 
 ### Direkter Aufruf ohne IEnumerable Klasse
 ```
@@ -60,3 +60,5 @@ public class DaysOfTheWeek : IEnumerable
     }  
 }  
 ```
+
+Quelle: [Microsoft](https://docs.microsoft.com/de-de/dotnet/csharp/programming-guide/concepts/iterators#BKMK_SimpleIterator)

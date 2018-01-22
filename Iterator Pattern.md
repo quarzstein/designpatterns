@@ -6,7 +6,7 @@ ebenfalls direkt aufgerufen werden, siehe unten im Beispiel. Sie geben hier ents
 Methode nacheinander die Werte zurück, welche definiert werden müssen.Ein Iterator wird in der Regel mit 
 einer `foreach` Anweisung erzeugt. 
 
-###Direkter Aufruf ohne IEnumerable Klasse
+### Direkter Aufruf ohne IEnumerable Klasse
 ```
 static void Main()  
 {  
@@ -27,9 +27,9 @@ public static System.Collections.IEnumerable SomeNumbers()
 
 ````
 
-###Beispielcode /Hinterlegung einer IEnumerable Klasse mit Aufruf der Methode:
+### Beispielcode /Hinterlegung einer IEnumerable Klasse mit Aufruf der Methode:
 ```
-###Aufruf der Methode im Code
+### Aufruf der Methode im Code
 static void Main()  
 {  
     DaysOfTheWeek days = new DaysOfTheWeek();  
@@ -43,7 +43,7 @@ static void Main()
 }  
 
 
-###Initialisierung der Klasse/Instanz
+### Initialisierung der Klasse/Instanz
 public class DaysOfTheWeek : IEnumerable  
 {  
     private string[] days = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };  

@@ -5,7 +5,7 @@ Erlaubt einem Objekt, sein Verhalten selbständig zu ändern, wenn sich sein int
 
 ## Aufbau
 Zunächst wird ein Objekt benötigt, welches verschiedene Status besitzt.
-In diesem Beispiel ist es eine Ampel, welche den Status ![#f03c15]Rot`#f03c15` und ![#0B610B]Grün`#0B610B` besitzen kann.
+In diesem Beispiel ist es eine Ampel, welche den Status Rot und Grün besitzen kann.
 Desweiteren benötigt das Objekt Funktionen zum Verändern des Zustandes, in diesem Fall das **Schalten**.
 Dieses Objekt, bzw. die Funktionen können dann beliebig erweitert werden.
 Ein Konto hat z.B. ein Besitzer der sich ändern kann und einen Geldbetrag.

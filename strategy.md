@@ -22,17 +22,17 @@ interface Verhalten
 
 class Verhalten1() : Verhalten
 {
-	// Deff. Verhalten1
+  // Deff. Verhalten1
 }
 
 class Verhalten2() : Verhalten
 {
-	// Deff. Verhalten2
+  // Deff. Verhalten2
 }
 
 class Verhalten3() : Verhalten
 {
-	// Deff. Verhalten3
+  // Deff. Verhalten3
 }
 ```
 
@@ -41,17 +41,17 @@ class Verhalten3() : Verhalten
 ```csharp
 abstract class Hauptklasse
 {
-	Verhalten verhalten = new Verhalten1();
+  Verhalten verhalten = new Verhalten1();
 
-	public void setVerhalten (Verhalten verhalten)
-	{
-		this.verhalten = verhalten;
-	}
+  public void setVerhalten (Verhalten verhalten)
+  {
+    this.verhalten = verhalten;
+  }
 
-	public void Verhalten()
-	{
-		verhalten.verhalten();
-	}
+  public void Verhalten()
+  {
+    verhalten.verhalten();
+  }
 }
 ```
 
@@ -60,9 +60,9 @@ abstract class Hauptklasse
 ```csharp
 public class Client
 {
-	Hauptklasse hauptklasse = new Hauptklasse();
-	hauptklasse.verhalten();
-	hauptklasse.setVerhalten(new Verhalten2);
-	hauptklasse.verhalten();
+  Hauptklasse hauptklasse = new Hauptklasse();
+  hauptklasse.verhalten();
+  hauptklasse.setVerhalten(new Verhalten2);
+  hauptklasse.verhalten();
 }
 ```

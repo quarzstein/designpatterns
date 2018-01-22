@@ -28,8 +28,9 @@ public static System.Collections.IEnumerable SomeNumbers()
 ````
 
 ### Beispielcode /Hinterlegung einer IEnumerable Klasse mit Aufruf der Methode:
+
+#### Aufruf der Methode im Code
 ```
-### Aufruf der Methode im Code
 static void Main()  
 {  
     DaysOfTheWeek days = new DaysOfTheWeek();  
@@ -41,9 +42,10 @@ static void Main()
     // Output: Sun Mon Tue Wed Thu Fri Sat  
     Console.ReadKey();  
 }  
+```
 
-
-### Initialisierung der Klasse/Instanz
+#### Initialisierung der Klasse/Instanz
+```
 public class DaysOfTheWeek : IEnumerable  
 {  
     private string[] days = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };  

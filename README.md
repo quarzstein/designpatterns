@@ -9,3 +9,8 @@
 * Nikolai - [State](state.md)
 * Marcel - [Iterator](iterator.md)
 * Tim - [Decorator](decorator.md)
+
+## Markdown helper
+
+* [Markdown Cheat Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+* [GitHub flavored markdown](https://guides.github.com/features/mastering-markdown/)

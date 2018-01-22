@@ -30,7 +30,8 @@ class Verhalten3() : Verhalten
 {
 	// Deff. Verhalten3
 }
-
+```
+```csharp
 abstract class Hauptklasse
 {
 	Verhalten verhalten = new Verhalten1();
@@ -45,7 +46,8 @@ public void Verhalten()
 {
 	verhalten.verhalten();
 }
-
+```
+```csharp
 public class Client
 {
 	Hauptklasse hauptklasse = new Hauptklasse();

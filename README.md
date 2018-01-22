@@ -14,3 +14,4 @@
 
 * [Markdown Cheat Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 * [GitHub flavored markdown](https://guides.github.com/features/mastering-markdown/)
+* [Markdown Linter](https://dlaa.me/markdownlint/)

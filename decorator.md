@@ -22,3 +22,62 @@ erfolgen
 * Ggf sehr viele Klassen, dies kann unübersichtlich werden
 
 ## Beispiel
+
+```csharp
+    public abstract class Component
+    {
+        public abstract void operate();
+    }
+
+    public class ConcreteComponent1 : Component
+    {
+        override public void operate()
+        {
+            Console.WriteLine("this is a concrete component");
+        }
+    }
+
+    public class ConcreteComponent2 : Component
+    {
+        public override void operate()
+        {
+            Console.WriteLine("This is another concrete component");
+        }
+    }
+
+    public class ConcreteDecorator1 : Decorator
+    {
+        public ConcreteDecorator1(Component component) : base(component)
+        {
+
+        }
+        override public void operate()
+        {
+            component.operate();
+            Console.WriteLine("This is a concrete decorator number one");
+        }
+    }
+
+
+    public abstract class Decorator : Component
+    {
+        protected Component component;
+
+        public Decorator(Component component)
+        {
+            this.component = component;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Component CompA = new ConcreteComponent1();
+            CompA.operate();
+            CompA = new ConcreteDecorator1(CompA);
+            CompA.operate();
+            Console.ReadLine();
+        }
+    }
+```

@@ -15,7 +15,7 @@ Ein Konto hat z.B. ein Besitzer der sich ändern kann und einen Geldbetrag.
 ### Status Klassen
 
 #### Vorgabe der Status Funktionen durch abstract
-```
+```csharp
 abstract class Licht
 {
 	public abstract void Handle(Ampel aktuelleAmpel);
@@ -23,7 +23,7 @@ abstract class Licht
 ```
 
 #### Definition Status und Aktion die durchgeführt werden soll
-```
+```csharp
 class Rot : Licht
 {
 	public override void Handle(Ampel aktuelleAmpel) {
@@ -40,7 +40,7 @@ class Gruen : Licht
 ```
 
 ### Objekt mit verschiedenen Status
-```
+```csharp
 abstract class Licht
 class Ampel
 {
@@ -69,7 +69,7 @@ class Ampel
 ```
 
 ### Beispiel Main Aufruf
-```
+```csharp
 Ampel Fussgaenger = new Ampel(new Rot());  
 
 Fussgaenger.Schalte();

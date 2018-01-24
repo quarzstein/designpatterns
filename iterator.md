@@ -7,6 +7,7 @@ Methode nacheinander die Werte zurück, welche definiert werden müssen.Ein Iter
 einer `foreach` Anweisung erzeugt und kann nur in einer Methode oder Get Zugriffsmethode vorkommen.
 
 ### Direkter Aufruf ohne IEnumerable Klasse
+
 ```csharp
 static void Main()  
 {  
@@ -30,6 +31,7 @@ public static System.Collections.IEnumerable SomeNumbers()
 ### Beispielcode /Hinterlegung einer IEnumerable Klasse mit Aufruf der Methode:
 
 #### Aufruf der Methode im Code
+
 ```csharp
 static void Main()  
 {  
@@ -45,6 +47,7 @@ static void Main()
 ```
 
 #### Initialisierung der Klasse/Instanz
+
 ```csharp
 public class DaysOfTheWeek : IEnumerable  
 {  

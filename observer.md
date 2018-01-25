@@ -1,4 +1,4 @@
-##Observer-Pattern
+## Observer-Pattern
 
 Das Observer Pattern ermöglicht, dass sich Objekte (Observer, beobachtendes Objekt) 
 bei einem anderen Objekt (Subjekt, beobachtetes Objekt) registrieren und fortan vom 

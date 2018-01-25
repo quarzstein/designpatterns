@@ -12,45 +12,56 @@ Es wird nicht mit der konkreten Implementierung des Verhaltens, sondern mit eine
 
 ## Code
 
-### Verhalten Interface + Implementation
+### Strategy-Interface + Konkrete Strategy
 
 ```csharp
-interface Verhalten
+interface Strategy()
 {
-  public void Verhalten();
+  public void Algorithm();
 }
 
-class Verhalten1() : Verhalten
+class ConcreteStrategy1() : Strategy
 {
-  // Deff. Verhalten1
+  public void Algorithm()
+  {
+   //Code
+  }
 }
 
-class Verhalten2() : Verhalten
+class ConcreteStrategy2() : Strategy
 {
-  // Deff. Verhalten2
+  public void Algorithm()
+  {
+   //Code
+  }
 }
 
-class Verhalten3() : Verhalten
+class ConcreteStrategy3() : Strategy
 {
-  // Deff. Verhalten3
+  public void Algorithm()
+  {
+   //Code
+  }
 }
 ```
 
-### Hauptklasse
+### Kontext
 
 ```csharp
-abstract class Hauptklasse
+abstract class Context
 {
-  Verhalten verhalten = new Verhalten1();
+  //Instanzvariable. Standartverhalten.
+  Strategy strategy = new ConcreteStrategy1();
 
-  public void setVerhalten (Verhalten verhalten)
+  public void setStrategy (Strategy strategy)
   {
-    this.verhalten = verhalten;
+    this.strategy = strategy;
   }
 
-  public void Verhalten()
+  public void Behavior()
   {
-    verhalten.verhalten();
+    //Zuweisung des Verhaltens an Verhaltensobjekt
+    strategy.Behavior();
   }
 }
 ```
@@ -60,9 +71,9 @@ abstract class Hauptklasse
 ```csharp
 public class Client
 {
-  Hauptklasse hauptklasse = new Hauptklasse();
-  hauptklasse.verhalten();
-  hauptklasse.setVerhalten(new Verhalten2);
-  hauptklasse.verhalten();
+  Context context = new Context();
+  context.Behavior(); //Standartverhalten
+  context.setStrategy(new ConcreteStrategy2);
+  context.Behavior(); //ConcreteStrategy2 Verhalten
 }
 ```

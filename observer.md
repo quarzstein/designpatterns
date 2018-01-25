@@ -33,12 +33,12 @@ public abstract class Subject
     { 
         observerList.remove(newObserver);
     } 
-	
+  
     // Allen observer in der Liste wird der neue Werd übergeben bzw. deren Update Methode wird aufgerufen. 
     protected void notifyObservers(int state)
     { 
         for (Observer observer : observerList) 
-	{ 
+  { 
             observer.update(state); 
         } 
     } 
@@ -52,17 +52,17 @@ public abstract class Subject
 
 public class ConcretSubjekt : Subject
 {
-	private int state;
-	
-	public Setstate(int value)	
-	{
-		state = value;
-	}
-	
-	public int Getstate()
-	{
-		return state;
-	}
+  private int state;
+  
+  public Setstate(int value)  
+  {
+    state = value;
+  }
+  
+  public int Getstate()
+  {
+    return state;
+  }
 }
 ```
 
@@ -71,15 +71,15 @@ public class ConcretSubjekt : Subject
 ```csharp
 public Interface Observer 
 {
-	public void Update(int state)
+  public void Update(int state)
 }
 
 public class ConcretObserver : Observer
 {
-	void Update(int state)
-	{
-		Console.Writeline("Mein status ist : " + state);
-	}
+  void Update(int state)
+  {
+    Console.Writeline("Mein status ist : " + state);
+  }
 }
 ```
 
@@ -89,17 +89,17 @@ public class ConcretObserver : Observer
 
 public class client
 {
-	public void test()
-	{
-		ConcretSubjekt SubjectA = new ConcretSubjekt();
-		ConcretSubjekt.attach = new ConcretObserver();
-		
-		ConcretSubjekt.Setstate(2);
-		// Ausgabe in der Console: "Mein Status ist : 2"
-		ConcretSubjekt.Setstate(5);
-		// Ausgabe in der Console: "Mein Status ist : 5"
-		
-		
-	}
+  public void test()
+  {
+    ConcretSubjekt SubjectA = new ConcretSubjekt();
+    ConcretSubjekt.attach = new ConcretObserver();
+    
+    ConcretSubjekt.Setstate(2);
+    // Ausgabe in der Console: "Mein Status ist : 2"
+    ConcretSubjekt.Setstate(5);
+    // Ausgabe in der Console: "Mein Status ist : 5"
+    
+    
+  }
 }
 ```

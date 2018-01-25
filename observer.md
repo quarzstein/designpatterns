@@ -19,22 +19,22 @@ Und die Konkreten Observer können bei einer Benachrichtigung dann mit der Daten
 ```csharp
 public abstract class Subject 
 { 
-	//Eine Liste zum verwalten von den angemeldeten Observern
+	// Eine Liste zum verwalten von den angemeldeten Observern
 	private List<Observer> observerList = new List<Observer>(); 
 
-	//Observer wird in die Observerliste hinzugefügt
+	// Observer wird in die Observerliste hinzugefügt
     public void attach(Observer newObserver)
 	{ 
         observerList.add(newObserver); 
     } 
 
-	//Observer wird aus der Liste entfernt
+	// Observer wird aus der Liste entfernt
     public void detach(Observer newObserver)
 	{ 
         observerList.remove(newObserver); 
     } 
 	
-	Allen observer in der Liste wird der neue Werd übergeben bzw. deren Update Methode wird aufgerufen. 
+	// Allen observer in der Liste wird der neue Werd übergeben bzw. deren Update Methode wird aufgerufen. 
     protected void notifyObservers(int state)
 	{ 
         for (Observer observer : observerList) 

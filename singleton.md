@@ -1,11 +1,11 @@
 ## Singleton-Pattern
 
-### 
-Das Singleton gewährleistet, dass ein Objekt nur einmal im Speicher vorhanden ist.
-Die Deklaration des Konstruktors als private verhindert, dass Objekte instanziert werden 
-können. Statt dessen werden sie durch eine Klassenmethode erzeugt und in einer statischen 
-Klassenvariablen gespeichert. Dies tut sie aber nur beim ersten einmal. Bei weiteren
-Aufrufen wird lediglich das Objekt als Variable zurückgegeben.
+### Das Singleton gewährleistet, dass ein Objekt nur einmal im Speicher vorhanden ist.
+
+####
+Der Zugriffsmodifikator "private" für den Standard-Konstruktor verhindert die Erzeugung von Objekte durch diesen.
+Statt dessen erfolgt die Instanzierung durch eine Klassenmethode, welche das Objekt in einer statischen Klassenvariablen speichert. 
+Dies geschieht beim erstmaligen Aufruf der Methode. Bei weiteren Aufrufen wird lediglich das Objekt als Variable zurückgegeben.
 
 ### Status Klassen
 

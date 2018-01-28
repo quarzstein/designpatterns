@@ -1,67 +1,189 @@
-# Iterator Pattern
+# Iterator-Pattern
 
-Iteratoren werden in der C# Entwicklung als Liste oder Arrays verwendet und beispielsweise als Interface `IEnumerable`
-in dem Programmcode hinterlegt werden. Iteratoren, müssen nicht zwangsweise eine zusätzliche Klasse besitzen, sondern können
-ebenfalls direkt aufgerufen werden, siehe unten im Beispiel. Sie geben hier entsprechend mit der `Yield Return`
-Methode nacheinander die Werte zurück, welche definiert werden müssen.Ein Iterator wird in der Regel mit 
-einer `foreach` Anweisung erzeugt und kann nur in einer Methode oder Get Zugriffsmethode vorkommen.
+## Definition
 
-### Direkter Aufruf ohne IEnumerable Klasse
+Das Iterator-Pattern wird verwendet, um über eine Liste zu traversieren ohne hier entsprechend die Struktur oder das Muster zu
+veröffentlichen. Heißt, eine Liste nach und nach Abzugehen. Der Iterator ist in diesem Fall der `Cursor`, welche durch die Kollektion
+durchgeht.
 
-```csharp
-static void Main()  
-{  
-    foreach (int number in SomeNumbers())  
-    {  
-        Console.Write(number.ToString() + " ");  
-    }  
-    // Output: 3 5 8  
-    Console.ReadKey();  
-}  
+## UML
 
-public static System.Collections.IEnumerable SomeNumbers()  
-{  
-    yield return 3;  
-    yield return 5;  
-    yield return 8;  
-}  
+![alt text](https://github.com/Marcellii/designpatterns/blob/master/iterator_uml.png)
 
-```
+## Anwendung
 
-### Beispielcode /Hinterlegung einer IEnumerable Klasse mit Aufruf der Methode:
+Um einen Iterator Anwenden zu können, muss zuvor ein Iterator Interface angelegt werden, wo die entsprechenden Methoden (next, 
+first,isDone und CurrentItem) erzeugt werden. Anschließend wird ein ConcreteIterator als Klasse definiert, damit der Iterator weiß, an 
+welcher Stelle dieser sich gerade befindet.
 
-#### Aufruf der Methode im Code
+Beispielcode für die Erstellung und Erzeugung eines Iterator-Pattern:
+
+### Erzeugen des Iterator Interfaces
 
 ```csharp
-static void Main()  
-{  
-    DaysOfTheWeek days = new DaysOfTheWeek();  
-
-    foreach (string day in days)  
-    {  
-        Console.Write(day + " ");  
-    }  
-    // Output: Sun Mon Tue Wed Thu Fri Sat  
-    Console.ReadKey();  
-}  
+interface IIterator
+{
+    string FirstItem { get;}
+    string NextItem{ get;}
+    string CurrentItem{ get;}
+    bool IsDone { get;}
+}
 ```
 
-#### Initialisierung der Klasse/Instanz
+### Erzeugen des Interfaces für die Aggregator Kollektion
 
 ```csharp
-public class DaysOfTheWeek : IEnumerable  
-{  
-    private string[] days = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };  
-
-    public IEnumerator GetEnumerator()  
-    {  
-        for (int index = 0; index < days.Length; index++)  
-        {  
-            // Yield each day of the week. Aus 
-            yield return days[index];  
-        }  
-    }  
-}  
+interface IAggregate
+{
+    IIterator GetIterator();
+    string this[int itemIndex]{set;get;}
+    int Count{get;}
+}
 ```
 
-Quelle: [Microsoft](https://docs.microsoft.com/de-de/dotnet/csharp/programming-guide/concepts/iterators#BKMK_SimpleIterator)
+#### Erzeugen der Konkreten Klasse für die Aggreator Kollektion
+
+```csharp
+class MyAggregate : IAggregate
+{
+    List&lt;string> values_ = null;
+
+    public MyAggregate()
+    {
+        values_ = new List&lt;string>();
+    }
+
+    #region IAggregate Members
+
+    public IIterator GetIterator()
+    {
+        return new MyIterator(this);
+    }
+
+    #endregion
+
+    public string this[int itemIndex]
+    {
+        get
+        {
+            if (itemIndex &lt; values_.Count)
+            {
+                return values_[itemIndex];
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+        set
+        {                
+            values_.Add(value);                                
+        }
+    }
+
+    public int Count
+    {
+        get
+        {
+            return values_.Count;
+        }
+    }
+}</string>
+```
+
+#### Implementieren des Konrekten Interator
+
+```csharp
+class MyIterator : IIterator
+{
+    IAggregate aggregate_ = null;
+    int currentIndex_ = 0;
+
+    public MyIterator(IAggregate aggregate)
+    {
+        aggregate_ = aggregate;
+    }
+
+    #region IIterator Members
+
+    public string FirstItem
+    {
+        get
+        {
+            currentIndex_ = 0;
+            return aggregate_[currentIndex_];
+        }
+    }
+
+    public string NextItem
+    {
+        get
+        {
+            currentIndex_ += 1;
+
+            if (IsDone == false)
+            {
+                return aggregate_[currentIndex_];
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+    }
+
+    public string CurrentItem
+    {
+        get
+        {
+            return aggregate_[currentIndex_];
+        }
+    }
+
+    public bool IsDone
+    {
+        get
+        {
+            if (currentIndex_ &lt; aggregate_.Count)
+            {
+                return false;
+            }
+            return true;
+        }
+    }
+
+    #endregion
+}
+```
+
+### Einfügen in das eigentliche Programm
+
+```csharp
+class Program
+{
+    static void Main(string[] args)
+    {
+        MyAggregate aggr = new MyAggregate();
+
+        aggr[0] = "1";
+        aggr[1] = "2";
+        aggr[2] = "3";
+        aggr[3] = "4";
+        aggr[4] = "5";
+        aggr[5] = "6";
+        aggr[6] = "7";
+        aggr[7] = "8";
+        aggr[8] = "9";
+        aggr[9] = "10";
+
+        IIterator iter = aggr.GetIterator();
+
+        for (string s = iter.FirstItem; iter.IsDone == false;  s = iter.NextItem )
+        {
+            Console.WriteLine(s);
+        }
+    }
+}
+```
+
+Quelle: [Codeproject](https://www.codeproject.com/Articles/362986/Understanding-and-Implementing-the-Iterator-Patter)

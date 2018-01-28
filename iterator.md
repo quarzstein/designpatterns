@@ -8,7 +8,7 @@ durchgeht.
 
 ## UML
 
-![alt text](https://github.com/Marcellii/designpatterns/blob/master/iterator_uml.png)
+![alt text](iterator_uml.png)
 
 ## Anwendung
 
@@ -46,11 +46,11 @@ interface IAggregate
 ```csharp
 class MyAggregate : IAggregate
 {
-    List&lt;string> values_ = null;
+    List<string> values_ = null;
 
     public MyAggregate()
     {
-        values_ = new List&lt;string>();
+        values_ = new List<string>();
     }
 
     #region IAggregate Members
@@ -66,7 +66,7 @@ class MyAggregate : IAggregate
     {
         get
         {
-            if (itemIndex &lt; values_.Count)
+            if (itemIndex < values_.Count)
             {
                 return values_[itemIndex];
             }
@@ -88,7 +88,7 @@ class MyAggregate : IAggregate
             return values_.Count;
         }
     }
-}</string>
+}
 ```
 
 #### Implementieren des Konrekten Interator
@@ -144,7 +144,7 @@ class MyIterator : IIterator
     {
         get
         {
-            if (currentIndex_ &lt; aggregate_.Count)
+            if (currentIndex_ < aggregate_.Count)
             {
                 return false;
             }

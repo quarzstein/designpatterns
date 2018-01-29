@@ -46,11 +46,11 @@ interface IAggregate
 ```csharp
 class MyAggregate : IAggregate
 {
-    List<string> values_ = null;
+    List<string> values = null;
 
     public MyAggregate()
     {
-        values_ = new List<string>();
+        values = new List<string>();
     }
 
     #region IAggregate Members
@@ -68,7 +68,7 @@ class MyAggregate : IAggregate
         {
             if (itemIndex < values_.Count)
             {
-                return values_[itemIndex];
+                return values[itemIndex];
             }
             else
             {
@@ -77,7 +77,7 @@ class MyAggregate : IAggregate
         }
         set
         {                
-            values_.Add(value);                                
+            values.Add(value);                                
         }
     }
 
@@ -85,7 +85,7 @@ class MyAggregate : IAggregate
     {
         get
         {
-            return values_.Count;
+            return values.Count;
         }
     }
 }
@@ -96,12 +96,12 @@ class MyAggregate : IAggregate
 ```csharp
 class MyIterator : IIterator
 {
-    IAggregate aggregate_ = null;
-    int currentIndex_ = 0;
+    IAggregate aggregate = null;
+    int currentIndex = 0;
 
     public MyIterator(IAggregate aggregate)
     {
-        aggregate_ = aggregate;
+        aggregate = aggregate;
     }
 
     #region IIterator Members
@@ -110,8 +110,8 @@ class MyIterator : IIterator
     {
         get
         {
-            currentIndex_ = 0;
-            return aggregate_[currentIndex_];
+            currentIndex = 0;
+            return aggregate[currentIndex];
         }
     }
 
@@ -119,11 +119,11 @@ class MyIterator : IIterator
     {
         get
         {
-            currentIndex_ += 1;
+            currentIndex += 1;
 
             if (IsDone == false)
             {
-                return aggregate_[currentIndex_];
+                return aggregate[currentIndex];
             }
             else
             {
@@ -136,7 +136,7 @@ class MyIterator : IIterator
     {
         get
         {
-            return aggregate_[currentIndex_];
+            return aggregate[currentIndex];
         }
     }
 
@@ -144,7 +144,7 @@ class MyIterator : IIterator
     {
         get
         {
-            if (currentIndex_ < aggregate_.Count)
+            if (currentIndex < aggregate.Count)
             {
                 return false;
             }
